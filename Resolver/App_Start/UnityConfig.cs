@@ -42,7 +42,7 @@ namespace Resolver
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
-            //ComponentLoader.LoadContainer(container, ".\\bin", "IoTTest.dll");
+            // ComponentLoader.LoadContainer(container, ".\\bin", "IoTTest.dll");
             ComponentLoader.LoadContainer(container, ".\\bin", "BusinessServices.dll");
             ComponentLoader.LoadContainer(container, ".\\bin", "DataAccess.dll");
         }
