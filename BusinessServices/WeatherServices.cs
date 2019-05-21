@@ -2,6 +2,7 @@
 using DataAccess;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,7 +42,9 @@ namespace BusinessServices
                 List<WeatherMeasurements> lstWeatherMeasurements = new List<WeatherMeasurements>();
                 if (string.IsNullOrEmpty(sensorType))
                 {
-                    foreach(var sensor in Enum.GetValues(typeof(Sensor)))
+                    //foreach(var sensor in Enum.GetValues(typeof(Sensor)))
+                    string[] sensors = ConfigurationManager.AppSettings["SensorType"].Split(',');
+                    foreach(string sensor in sensors)
                     {
                         var weatherInfo = cloudStorageAccess.GetWeatherMeasurements(deviceId, measuredDate, sensor.ToString().ToLower());
                         lstWeatherMeasurements.Add(weatherInfo);

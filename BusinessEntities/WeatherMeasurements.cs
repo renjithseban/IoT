@@ -15,8 +15,8 @@ namespace BusinessEntities
 
         public string MeasuredDate { get; set; }
 
-        [JsonConverter(typeof(StringEnumConverter))]
-        public Sensor SensorType { get; set; }
+        //[JsonConverter(typeof(StringEnumConverter))]
+        public string SensorType { get; set; }
 
         public List<AtomicMeasurements> Measurements { get; set; }
 
@@ -26,7 +26,7 @@ namespace BusinessEntities
             {
                 this.DeviceId = deviceId;
                 this.MeasuredDate = measuredDate;
-                this.SensorType = (Sensor)Enum.Parse(typeof(Sensor), CultureInfo.CurrentCulture.TextInfo.ToTitleCase(sensorType.ToLower()));
+                this.SensorType = sensorType;//(Sensor)Enum.Parse(typeof(Sensor), CultureInfo.CurrentCulture.TextInfo.ToTitleCase(sensorType.ToLower()));
                 this.Measurements = new List<AtomicMeasurements>();
             }
             catch (Exception ex)
@@ -37,10 +37,10 @@ namespace BusinessEntities
         }
     }
 
-    public enum Sensor
-    {
-        Temperature,
-        Humidity,
-        Rainfall
-    }
+    //public enum Sensor
+    //{
+    //    Temperature,
+    //    Humidity,
+    //    Rainfall
+    //}
 }
